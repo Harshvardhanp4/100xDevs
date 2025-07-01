@@ -8,6 +8,7 @@ function sum(n){
         ans = ans + i;
     }
 }
+//route
 app.get("/",function(req,res){
     
     const n = req.query.n;
