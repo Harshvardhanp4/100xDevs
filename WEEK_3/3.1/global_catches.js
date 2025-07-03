@@ -12,7 +12,9 @@ app.post("/health-check", (req,res)=>{
 
 //global catches
 app.use(function(err,req,res,next){
-   
+    // res.json({
+    //     msg: "Sorry something is up with our routes!"
+    // })
     res.status(500).send("An internal error has occured!");
 })
 

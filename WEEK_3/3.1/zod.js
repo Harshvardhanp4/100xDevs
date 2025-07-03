@@ -3,11 +3,13 @@ const zod = require("zod")
 const app = express();
 
 const schema = zod.array(zod.number());
-const schema = zod.object({
-    email : zod.string(),
-    password: z.string(),
-    country: z.literal("IN").or(z.literal("US"))
-})
+
+// const schema = zod.object({
+//     email : zod.string(),
+//     password: z.string(),
+//     country: z.literal("IN").or(z.literal("US"))
+//     kidneys: z.array(z.number())
+// })
 
 app.use(express.json()); //if we dont use this then you cant get body
 
