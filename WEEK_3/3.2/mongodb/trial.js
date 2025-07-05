@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://Harshvardhanp4:igotnochill@cluster0.plpym.mongodb.net/")
+
 
 
 const User = mongoose.model('Users', { name: String, email: String, password: String });
