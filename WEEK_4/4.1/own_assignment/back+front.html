@@ -24,7 +24,7 @@ async function populateDiv2(){
     const  a = document.getElementById("firstNumber").value;
     const  b = document.getElementById("secondNumber").value;
     const response = await fetch("http://localhost:3000/sum?a=" + a + "&b=" + b)
-    const ans = await response.text();
+    const ans = await response.text();// return the promise.
     
     document.getElementById("finalSum").innerText = "Sum is: " + ans ;
 }
