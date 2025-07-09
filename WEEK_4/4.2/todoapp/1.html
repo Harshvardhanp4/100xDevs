@@ -6,18 +6,49 @@
     <title>Document</title>
 </head>
         <script>
+            
+            function createChild(title,description,id){
+                const child = document.createElement("div");
+                const firstGrandChild = document.createElement("div");
+                firstGrandChild.innerHTML = title;
+                child.appendChild(firstGrandChild);
+
+                const secondGrandChild = document.createElement("div");
+                secondGrandChild.innerHTML= description;
+                child.appendChild(secondGrandChild);
+
+                const thirdGrandChild = document.createElement("button");
+                thirdGrandChild.innerHTML = "Mark as done!";
+                thirdGrandChild.setAttribute("onclick",`markAsDone(${id})`);
+                child.appendChild(thirdGrandChild);
+                child.setAttribute("id", id);
+                
+                return child;
+
+            }
+
+            function markAsDone(id) {
+            const parent = document.getElementById(id);
+            parent.children[2].innerHTML= "done"
+}
+
+
+            let globalId = 1;
             function addTodo(){
                 const title = document.getElementById("title").value;
-                const descrption = document.getElementById("description").value;
-                console.log(title)
-                console.log(descrption)
+                const description = document.getElementById("description").value;
+                const parent = document.getElementById("todos");
+
+                parent.appendChild(createChild(title, description, globalId++)); //structure of the div
             }
         </script>
 <body>
     <div>
-        <input id ="title" type="text" placeholder="title"><br><br>
-        <input id = "description"type="text" placeholder="descrption"><br><br>
+        <input id ="title" type="text" placeholder="Todo title"><br><br>
+        <input id = "description"type="text" placeholder="Todo descrption"><br><br>
         <button onclick="addTodo()">Add todo</button>
+        <div id="todos">
+        </div>
     </div>
 </body>
 </html>
