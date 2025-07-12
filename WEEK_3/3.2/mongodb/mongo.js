@@ -1,14 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require('dotenv').config();
-
+mongoose.connect(process.env.MONGODB_URI)
+.then(()=>console.log("Connected to MongoDB"))
+.catch((err => console.log("Some error occured", err)))
 
 const app = express();
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI)
-.then(()=>console.log("Connected to MongoDB"))
-.catch((err => console.log("Some error occured", err)))
+
 
 const User = mongoose.model('Users', {
      name: String,
