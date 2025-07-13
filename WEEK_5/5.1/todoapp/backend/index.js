@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express()
-const { createTodo } = require("./types"); 
+const { createTodo, updateTodo } = require("./types"); 
 const { todo } = require("./db");
+const PORT = 3000;
 
 app.use(express.json());
 
@@ -27,7 +28,7 @@ app.use(express.json());
 
     })
 
-    app.get("todo",async(req,res)=>{
+    app.get("/todo",async(req,res)=>{
         const todos = await todo.find({})
         //wait for database to get so await //
         res.json({
@@ -44,7 +45,7 @@ app.use(express.json());
             })
         }
 
-        await todo.update({
+        await todo.updateOne({
             _id: req.body.id
         },{
             completed:true
@@ -52,4 +53,8 @@ app.use(express.json());
         res.json({
             msg: "Todo completed!"
         })
+    })
+
+    app.listen(3000,()=>{
+        console.log(`app running on port ${PORT}`)
     })
