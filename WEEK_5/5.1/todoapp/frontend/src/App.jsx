@@ -5,13 +5,14 @@ import './App.css'
 import { CreateTodo } from './components/CreateTodo'
 import { Todos } from './components/Todos'
 
+// useEffect hook
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, settodos] = useState([]);
 
   return (
     <div>
-      <CreateTodo/>
-      <Todos/>
+      <CreateTodo settodos={settodos}/>
+      <Todos todos ={todos}/>
     </div>
   )
 }
