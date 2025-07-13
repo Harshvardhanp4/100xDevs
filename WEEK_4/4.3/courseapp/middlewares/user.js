@@ -2,6 +2,8 @@ const { User } = require("../db")
 
 function userMiddleware(req,res,next){
 
+    const username = req.headers.username;
+    const password = req.headers.password;
     //implement auth logic this middleware is to handle
     //auth
     //need to check headers and validate user
