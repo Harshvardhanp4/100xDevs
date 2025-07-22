@@ -68,6 +68,6 @@ const Header = React.memo(function Header({title}){
     {title}
   </div>
 })
-// parent re renders not the individual renders.
+// parent re renders not the individual renders only the title which changes re renders.
 export default App
 
