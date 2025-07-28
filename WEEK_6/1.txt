@@ -5,3 +5,7 @@ features from function components
 
  useEffect, useMemo, useCallback, useRef, useReducer
  useContext, useLayoutEffect
+
+ what does mount mean:-
+ first time an element gets put up
+ 

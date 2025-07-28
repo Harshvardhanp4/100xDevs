@@ -155,38 +155,41 @@
 // real wrapper 
 
 
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import './App.css'
 
 
-function App() {
-  return <div>
-     <CardWrapper>
-      hi there 
-      </CardWrapper>
+// function App() {
+//   return <div>
+//      <CardWrapper>
+//       hi there 
+//       </CardWrapper>
 
-      <CardWrapper>
-        <CardWrapper>
-            <TextComponent/>
-          </CardWrapper>
+//       <CardWrapper>
+//         <CardWrapper>
+//             <TextComponent/>
+//           </CardWrapper>
         
-      </CardWrapper>
+//       </CardWrapper>
       
-  </div>
+//   </div>
  
-}
-function CardWrapper({children}){
-    return <div style ={{border: "2px solid black", padding: "20px"}}>
-    {children}
-    </div>
-}
+// }
+// function CardWrapper({children}){
+//     return <div style ={{border: "2px solid black", padding: "20px"}}>
+//     {children}
+//     </div>
+// }
 
-function TextComponent(){
-  return <div>
-    hi from text component
-  </div>
-}
+// function TextComponent(){
+//   return <div>
+//     hi from text component
+//   </div>
+// }
 
-export default App
+// export default App
+
+
+
