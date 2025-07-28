@@ -109,7 +109,7 @@ const [inputValue ,setInputValue] = useState(1);
 
     }
     return count;
-  })
+  },[inputValue])
   return <div>
     <input onChange = {function(e){
       setInputValue(e.target.value);

@@ -27,3 +27,14 @@ without writing a class. Allow stateful logic and lifecycle features component h
 
  completed till 19;00
  
+
+ [] state variable is taken this is where we add the dependancy
+
+
+
+ useMemo:-
+
+ memoization: - means remembering some output given an input and not computing it again 
+ real world: - you are driver and you want to check petrol would you do that in every lap,every 10 laps or 20 mins 
+
+ completed till 1:15:00
