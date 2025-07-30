@@ -1,35 +1,82 @@
+
+//------------Reconcillation,state,useState-----------------//
+
+
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import './App.css'
+
+// function App() {
+//   const [count, setCount] = useState(0)//this is a state  //count is a state variable //setCount is a function 
+//   console.log("hi from App")
+//   return (
+//     <div>
+//       <button onClick={()=>{
+//         setCount(count+1) //state update
+//       }}>Count is {count}</button>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+
+//---------------------useEffect---------------------//
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useEffect } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [exchangeData,  setExchangeData] = useState({});
+  const [bankData,  setBankData] = useState({});
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+  console.log("re - render")
+ // this code base will cause multiple re renders   
+  // setTimeout(()=>{
+  //   setBankData({
+  //     income: 100
+  //   });
+  // }, 3000);
+
+  // setTimeout(()=>{
+  //   setExchangeData({
+  //     returns: 100
+  //   });
+  // }, 1000); //this code base will cause multiple re renders
+
+
+  // we use useEffect here
+
+  useEffect(()=>{ 
+  setTimeout(()=>{
+    setBankData({
+      income: 100
+    });
+  }, 3000);
+  },[])
+
+  useEffect(()=>{
+    setTimeout(()=>{
+    setExchangeData({
+      returns: 100
+    });
+  }, 1000);
+  },[])
+  
+  const incomeTax = (bankData.income  + exchangeData.returns) * 0.3;
+  return(
+  <div>
+    hi there your income tax returns are {incomeTax}
+  </div>
   )
+  
 }
 
 export default App
