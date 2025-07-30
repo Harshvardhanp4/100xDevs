@@ -146,61 +146,94 @@
 
 //------------------------------useCallback----------------------------------//
 
-import { useEffect, useMemo, useState, memo, useCallback } from "react";
+// import { useEffect, useMemo, useState, memo, useCallback } from "react";
+
+// function App (){
+//   const[exchangeData, setExchangeData] = useState({});
+//   const[exchange2Data, setExchange2Data] = useState({});
+//   const[bankData, setBankData] = useState({});
+
+
+//   useEffect(()=>{
+//     setExchangeData({
+//       returns: 100
+//     });
+//   }, [])
+
+//   useEffect(()=>{
+//     setExchange2Data({
+//       returns: 100
+//     });
+//   }, [])
+
+//   useEffect(()=>{
+//     setTimeout(()=>{
+//        setBankData({
+//       income: 100
+//     });
+//     }, 5000)
+   
+//   }, [])
+  
+// const  calculatecryptoReturns = useCallback(function(){
+//     return exchangeData.returns+ exchange2Data.returns;
+//   })
+
+  
+
+//   return <div>
+//   <CryptoGainsCalculator calculateCryptoReturns={calculatecryptoReturns}></CryptoGainsCalculator>
+//   <Dummy></Dummy>
+//   </div>
+
+// }
+
+// const CryptoGainsCalculator = useCallback(function({calculateCryptoReturns}){
+//   console.log("crypto hi")
+//   return <div>
+//     your crypto returns are {calculateCryptoReturns()}
+//   </div>
+// })
+
+// const Dummy = memo(()=>{
+//   return <div>
+//     hi re render king
+//   </div>
+// })
+
+
+
+// export default App;
+
+
+
+
+
+
+//---------------------------------------------useRef--------------------------------//
+
+
+
+import { useEffect, useRef } from "react";
+
 
 function App (){
-  const[exchangeData, setExchangeData] = useState({});
-  const[exchange2Data, setExchange2Data] = useState({});
-  const[bankData, setBankData] = useState({});
+  const divRef = useRef();
 
-
-  useEffect(()=>{
-    setExchangeData({
-      returns: 100
-    });
-  }, [])
-
-  useEffect(()=>{
-    setExchange2Data({
-      returns: 100
-    });
-  }, [])
 
   useEffect(()=>{
     setTimeout(()=>{
-       setBankData({
-      income: 100
-    });
-    }, 5000)
-   
-  }, [])
-  
-const  calculatecryptoReturns = useCallback(function(){
-    return exchangeData.returns+ exchange2Data.returns;
-  })
+      divRef.current.innerHTML = "10"
+    }, 5000);
+  },[])
 
-  
 
-  return <div>
-  <CryptoGainsCalculator calculateCryptoReturns={calculatecryptoReturns}></CryptoGainsCalculator>
-  <Dummy></Dummy>
-  </div>
-
+  const incomeTax = 20000;
+  return (
+    <div>
+      hi there tazes are <div ref={divRef}>{incomeTax}</div>
+    </div>
+  )
 }
-
-const CryptoGainsCalculator = useCallback(function({calculateCryptoReturns}){
-  console.log("crypto hi")
-  return <div>
-    your crypto returns are {calculateCryptoReturns()}
-  </div>
-})
-
-const Dummy = memo(()=>{
-  return <div>
-    hi re render king
-  </div>
-})
-
-
 
 export default App;
