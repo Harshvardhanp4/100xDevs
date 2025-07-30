@@ -45,4 +45,7 @@ without writing a class. Allow stateful logic and lifecycle features component h
  optimizing performance of applications, in cases which involves child components that 
  rely on reference equality to prevent unnecessary renders
 
- that is:- 
+ that is:- to avoid re render
+
+
+ -custom hooks:- should start with use 
