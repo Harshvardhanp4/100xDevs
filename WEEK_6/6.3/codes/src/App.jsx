@@ -94,7 +94,59 @@
 
 //-----------------------------------useMemo--------------------------------------/
 
-import { useEffect, useMemo, useState } from "react";
+// import { useEffect, useMemo, useState } from "react";
+
+// function App (){
+//   const[exchangeData, setExchangeData] = useState({});
+//   const[exchange2Data, setExchange2Data] = useState({});
+//   const[bankData, setBankData] = useState({});
+
+
+//   useEffect(()=>{
+//     setExchangeData({
+//       returns: 100
+//     });
+//   }, [])
+
+//   useEffect(()=>{
+//     setExchange2Data({
+//       returns: 100
+//     });
+//   }, [])
+
+//   useEffect(()=>{
+//     setTimeout(()=>{
+//        setBankData({
+//       income: 100
+//     });
+//     }, 5000)
+   
+//   }, [])
+  
+//   const cryptoReturns  = useMemo(()=>{
+//     console.log(" hey rerender")
+//     return exchangeData.returns + exchange2Data.returns;
+//   },[exchangeData,exchange2Data]) ;
+
+//   const incomeTax = (cryptoReturns + bankData.income)*0.3;
+  
+
+//   return <div>
+//   Your income tax returns are {incomeTax}
+//   </div>
+
+// }
+
+// export default App;
+
+
+
+
+
+
+//------------------------------useCallback----------------------------------//
+
+import { useEffect, useMemo, useState, memo, useCallback } from "react";
 
 function App (){
   const[exchangeData, setExchangeData] = useState({});
@@ -123,18 +175,32 @@ function App (){
    
   }, [])
   
-  const cryptoReturns  = useMemo(()=>{
-    console.log(" hey rerender")
-    return exchangeData.returns + exchange2Data.returns;
-  },[exchangeData,exchange2Data]) ;
+const  calculatecryptoReturns = useCallback(function(){
+    return exchangeData.returns+ exchange2Data.returns;
+  })
 
-  const incomeTax = (cryptoReturns + bankData.income)*0.3;
   
 
   return <div>
-  Your income tax returns are {incomeTax}
+  <CryptoGainsCalculator calculateCryptoReturns={calculatecryptoReturns}></CryptoGainsCalculator>
+  <Dummy></Dummy>
   </div>
 
 }
+
+const CryptoGainsCalculator = useCallback(function({calculateCryptoReturns}){
+  console.log("crypto hi")
+  return <div>
+    your crypto returns are {calculateCryptoReturns()}
+  </div>
+})
+
+const Dummy = memo(()=>{
+  return <div>
+    hi re render king
+  </div>
+})
+
+
 
 export default App;
