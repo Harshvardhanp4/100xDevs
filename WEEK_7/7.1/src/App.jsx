@@ -198,7 +198,7 @@ function App() {
   )
 }
 
-function Count({ setCount}){ 
+function Count({ setCount}){ // here you can see that count doesnt need the setCount but buttons need it so we have drilled the prop down not a good approach but for learning App(parent)-> Child(Count)-> Button->(Child of Count)
   return <div>
     <CountRenderer/>
     <Buttons setCount={setCount}/>
@@ -213,7 +213,7 @@ function CountRenderer(){
 }
 
 function Buttons({setCount}){
-  const count = useContext(CountContext);  
+  const count = useContext(CountContext);
   return <div>
     <button onClick={()=>{
       setCount(count + 1);
