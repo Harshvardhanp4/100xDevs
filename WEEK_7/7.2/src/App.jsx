@@ -65,7 +65,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { CountContext } from '../../7.1/src/components/context'
-import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
+import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import { countAtom } from './store/atoms/count'
 
 function App() {
@@ -97,13 +97,14 @@ function CountRenderer(){
 }
 
 function Buttons(){
-  const [count, setCount]  = useRecoilState(countAtom);
-  return <div>
+  const setCount = useSetRecoilState(countAtom); //this gives us a setter function to update 
+  // useSetRecoil state  gives us setCount which updates the default atom value more less 
+    return <div>
     <button onClick={()=>{
-      setCount(count+1)
+      setCount(count => count+1)
     }}>Increment</button>
     <button onClick={()=>{
-      setCount(count - 1 )
+      setCount(count=> count - 1 )
     }}> Decrement</button>
   </div>
 }
