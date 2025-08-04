@@ -117,13 +117,74 @@
 //---------------------------- Even/ODD -------------------------------------------------//
 
 
+// import { useContext, useMemo } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import './App.css'
+// import { CountContext } from '../../7.1/src/components/context'
+// import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+// import { countAtom } from './store/atoms/count'
+
+// function App() {
+  
+//   return (
+//     <>
+//     <RecoilRoot>
+//       <Count></Count>
+//     <Buttons></Buttons>
+//     <Even></Even>
+//     </RecoilRoot>
+//     </>
+//   )
+// }
+
+
+// function Count(){
+//   const count = useRecoilValue(countAtom);
+//   return <div>
+//     {count}
+//   </div>  
+// }
+
+// function Buttons(){
+//   const setCount = useSetRecoilState(countAtom);
+//   return <div>
+//     <button onClick={()=>{
+//       setCount(count=> count + 1)
+//     }}>Increase</button>
+//     <button onClick={()=>{
+//       setCount(count=>count-1)
+//     }}>Decrease</button>
+//   </div>
+// }
+
+// function Even(){
+ 
+//  const EvenNumber = useRecoilValue(countAtom);
+// const isEven =  useMemo(()=>{
+//   return EvenNumber%2== 0
+// },[EvenNumber])
+
+// return isEven ? <div><p>The no is even</p></div> : null;
+// }
+ 
+
+// export default App
+
+
+
+
+
+//-----------------------Selector-----------------------------------------//
+
+
 import { useContext, useMemo } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { CountContext } from '../../7.1/src/components/context'
 import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { countAtom } from './store/atoms/count'
+import { countAtom, evenSelector } from './store/atoms/count'
 
 function App() {
   
@@ -150,22 +211,19 @@ function Buttons(){
   const setCount = useSetRecoilState(countAtom);
   return <div>
     <button onClick={()=>{
-      setCount(count=> count + 1)
+      setCount(count=> count + 1);
     }}>Increase</button>
     <button onClick={()=>{
-      setCount(count=>count-1)
+      setCount(count => count - 1);
     }}>Decrease</button>
   </div>
 }
 
 function Even(){
  
- const EvenNumber = useRecoilValue(countAtom);
-const isEven =  useMemo(()=>{
-  return EvenNumber%2== 0
-},[EvenNumber])
+ const EvenNumber = useRecoilValue(evenSelector);
 
-return isEven ? <div><p>The no is even</p></div> : null;
+return EvenNumber ? <div><p>The no is even</p></div> : null;
 }
  
 
