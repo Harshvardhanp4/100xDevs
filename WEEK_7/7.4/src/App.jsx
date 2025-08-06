@@ -48,16 +48,15 @@
 
 
 
-
-
-// -------------------Selectors-------------------------------------------//
+//---------------------------Selectors----------------------------//
 
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { jobAtom, messagingAtom, networkAtom, notificationsAtom } from './store/atoms'
+import { jobAtom, messagingAtom, networkAtom, notificationsAtom, totalNotificationSelector } from './store/atoms'
+import { useMemo } from 'react'
 
 function App(){
   return <RecoilRoot>
@@ -66,21 +65,25 @@ function App(){
 } 
 
 function Navbar() {
-  const networkCount = useRecoilValue(networkAtom); 
+  const networkCount = useRecoilValue(networkAtom); // this will only get the curr value
   const jobCount = useRecoilValue(jobAtom);
   const notificationCount = useRecoilValue(notificationsAtom);
-  const messagingCount = useRecoilValue(messagingAtom); 
+  const messagingCount = useRecoilValue(messagingAtom); // this will give value as well as function to update the value. only if [currvalue, setcurrvalue is there i may have removed it for updations]
 
+  // const totalNotificationCount = useMemo(()=>{
+  //   return networkCount + jobCount + notificationCount + messagingCount; 
+  // }, [networkCount, jobCount ,  notificationCount, messagingCount]) // this is a ugly approach of loading all the notficiations not ugly but we can use a selector to do this 
+  
+  const totalNotificationCount = useRecoilValue(totalNotificationSelector);
   return (
     <>
-     
+      
       <button>Home</button>
-
       <button>My Network ({networkCount >= 100 ? "99+" : networkCount})</button>
       <button>Jobs ({jobCount})</button>
       <button>Messaging ({messagingCount})</button>
       <button>Notifications ({notificationCount})</button>
-      <button>Me</button>
+      <button>Me({totalNotificationCount})</button>
     
       
     </>
@@ -88,7 +91,10 @@ function Navbar() {
   )
 
 }
-
-
+ 
 
 export default App
+
+
+
+
