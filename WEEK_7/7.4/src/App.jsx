@@ -116,14 +116,15 @@ function App(){
 } 
 
 function Navbar() {
-  const [notificationCount, setNotificationCount] = useRecoilState(notifications); 
+  // const [notificationCount, setNotificationCount] = useRecoilState(notifications); 
+  const notificationCount = useRecoilValue(notifications);
   const totalNotificationCount = useRecoilValue(totalNotificationSelector);
   
-  useEffect(()=>{
-    axios.get("http://localhost:3000/notifications")
-    .then(res=> setNotificationCount(res.data))
-    .catch(err=> console.error("Error fetching counts", err))
-  },[setNotificationCount])
+  // useEffect(()=>{
+  //   axios.get("http://localhost:3000/notifications")
+  //   .then(res=> setNotificationCount(res.data))
+  //   .catch(err=> console.error("Error fetching counts", err))
+  // },[setNotificationCount]) // no use of this 
    
   return (
     <>
