@@ -33,7 +33,7 @@
 
 
 import './App.css'
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { RecoilRoot, useRecoilValue, useRecoilState, useRecoilValueLoadable } from 'recoil'
 import { todosAtomFamily } from './store/atom'
 
 function App() {
@@ -48,12 +48,15 @@ function App() {
 }
 
 function Todo({id}) {
-  const [todo, setTodo] = useRecoilState(todosAtomFamily(id));
-
+  const todoLoadable = useRecoilValueLoadable(todosAtomFamily(id));
+  if(todoLoadable.state === "loading"){
+    return <div>Loading Todo{id}</div>;
+  }
+  const todo = todoLoadable.contents;
     return (
       <>
       {todo.title}
-      {todo.description}
+      {todo.description} <br></br>
       </>
     )
 }
