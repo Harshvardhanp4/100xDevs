@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { titleAtom, descriptionAtom } from "../store/atom";
+
 export function Todos(){
   const [title, setTitle] = useRecoilState(titleAtom)
   const [description, setDescription] = useRecoilState(descriptionAtom);

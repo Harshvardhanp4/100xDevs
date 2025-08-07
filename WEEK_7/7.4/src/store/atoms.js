@@ -33,6 +33,10 @@
 //     }
 // })
 
+
+//-----------------------------------------------------------------------------------------------------------//
+//async data queries atom// 
+
 import { atom,  selector} from 'recoil'
 
 export const notifications= atom({
