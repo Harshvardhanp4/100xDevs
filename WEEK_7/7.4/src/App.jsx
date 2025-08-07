@@ -124,7 +124,7 @@ function Navbar() {
   //   axios.get("http://localhost:3000/notifications")
   //   .then(res=> setNotificationCount(res.data))
   //   .catch(err=> console.error("Error fetching counts", err))
-  // },[setNotificationCount]) // no use of this 
+  // },[setNotificationCount])                                    // no use of this 
    
   return (
     <>
