@@ -1,24 +1,24 @@
 
 
-export function VideoCard(){
+export function VideoCard(props: any){
     return <div>
-       <img src="/photo.jpg" alt="" />
-       <div className="grid grid-cols-12">
-        <div className="col-span-1">
-            <img className = {"rounded-full w-20 h-20"} src="/photo.jpg" alt="" />
-        </div>
-        <div className="col-span-11 pl-5">
-            <div>
-                 Afro Beats | Beach Music | Chill Music
+       <img src={props.image} className="rounded-xl"/>
+       <div className="grid grid-cols-12 pt-2">
+            <div className="col-span-1"> 
+                <img className = {"rounded-full w-12 h-12"} src={props.thumbImage} alt="" />
             </div>
-           <div className="col-span-11 pl-5 text-gray-600 text-base">
-           Beach DJ
-        </div> 
+            <div className="col-span-11 pl-2">
+                <div>
+                 {props.title}
+                </div>
+                <div className="col-span-11 text-gray-400 text-base">
+                {props.author}
+                </div> 
 
-        <div className="col-span-11 pl-5 text-gray-600 text-base">
-           46M | 13 days ago
-        </div> 
-        </div>
+            <div className="col-span-11  text-gray-400 text-base">
+                {props.views} | {props.timestamp}
+            </div> 
+        </div>  
         
         
 
