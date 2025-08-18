@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Flex from './pages/Flex'
 import Grid from './pages/Grid'
+import { Responsive } from './pages/Responsive'
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
   return (
     <>
       {/* <Flex></Flex> */}
-      <Grid></Grid>
+      {/* <Grid></Grid> */}
+      <Responsive></Responsive>
     </>  //check Flex page
 
 
