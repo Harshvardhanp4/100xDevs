@@ -19,7 +19,7 @@ export const Payout= ({title, showWarning, orderCount, amount}) =>{
             <div className="font-semibold text-2xl">
                 Rs.{amount}
             </div>
-            {orderCount ? <div className="flex text-blue-500 cursor-pointer underline font-medium flex flex-col justify-center">
+            {orderCount ? <div className=" text-blue-500 cursor-pointer underline font-medium flex flex-col justify-center">
                 <div className="flex">
                 <div className="text-blue-500"> 
                 {orderCount} order(s)
