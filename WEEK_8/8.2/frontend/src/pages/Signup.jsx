@@ -28,7 +28,7 @@ export const Signup = () =>{
                 }} placeholder="harsh@gmail.com" label={"Email"}></InputBox>   
                 <InputBox onChange={e=>{
                 setPassword(e.target.value);
-                }}placeholder="password@123" label={"Password"}></InputBox>   
+                }}placeholder="password@123" label={"Password"} type = "password"></InputBox>   
                  <div className="pt-4">
                     <Button onClick={()=>{
                         axios.post("http://localhost:3000/api/v1/user/signup",{

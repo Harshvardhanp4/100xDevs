@@ -12,7 +12,7 @@ export const Signin = () =>{
                     <Heading label={"Sign In"}></Heading>
                     <SubHeading label={"Enter your credentials  to access your account"}></SubHeading> 
                     <InputBox placeholder="harsh@gmail.com" label={"Email"}></InputBox>   
-                    <InputBox placeholder="password@123" label={"Password"}></InputBox>   
+                    <InputBox placeholder="password@123" label={"Password"} type={"password"}></InputBox>   
                 <div className="pt-4">
                     <Button label= {"Sign In"}></Button>
                 </div>
