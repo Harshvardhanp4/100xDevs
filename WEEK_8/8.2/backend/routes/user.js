@@ -3,7 +3,6 @@ const zod = require("zod");
 const {User, Account} = require("../database/db")
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const { User } = require("../database/db")
 const JWT_SECRET =  process.env.JWT_SECRET;
 const {authMiddleware} = require("../middlewares")
 
@@ -15,7 +14,7 @@ const signupSchema = zod.object({
 })
 
 router.post("/signup", async (req, res) => {
-    const result = signupBody.safeParse(req.body);
+    const result = signupSchema.safeParse(req.body);
 
     if (!result.success) {
         return res.status(400).json({
