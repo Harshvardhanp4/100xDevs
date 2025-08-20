@@ -6,6 +6,7 @@ export const SendMoney = () => {
     const id = searchParams.get("id");
     const name = searchParams.get("name");
     const [amount, setAmount] = useState(0);
+    
 
     return <div class="flex justify-center h-screen bg-gray-100">
         <div className="h-full flex flex-col justify-center">
