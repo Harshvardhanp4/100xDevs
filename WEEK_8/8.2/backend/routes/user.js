@@ -30,17 +30,17 @@ router.post("/signup", async (req, res) => {
     })
 
     if(existingUser) {
-        return res.status(411).json({
+        return res.status(400).json({   // <-- changed from 411 to 400
             message: "Email already taken / Incorrect inputs"
         })
     }
 
-        const user = await User.create({
-            username,
-            password,
-            firstName,
-            lastName,
-        });
+    const user = await User.create({
+        username,
+        password,
+        firstName,
+        lastName,
+    });
 
     const userId = user._id;
     
@@ -67,7 +67,7 @@ const signinBody = zod.object({
 router.post("/signin", async(req, res) => {
     const { success } = signinBody.safeParse(req.body)
     if(!success) {
-        return res.status(411).json({
+        return res.status(400).json({   // <-- changed from 411 to 400
             message: "Email already taken / Incorrect inputs"
         })
     }
@@ -88,7 +88,7 @@ router.post("/signin", async(req, res) => {
         return;
     }
 
-    res.status(411).json({
+    res.status(404).json({   // <-- changed from 411 to 404
         message: "Error while logging in"
     })
 })
@@ -121,9 +121,9 @@ router.put("/", authMiddleware, async (req, res) => {
 })
 
 router.get("/bulk", async(req, res) => {
-        const filter = req.query.filter || "";
-        
-        const users = await User.find({
+    const filter = req.query.filter || "";
+    
+    const users = await User.find({
         $or: [{
             firstName: {
                 "$regex": filter
