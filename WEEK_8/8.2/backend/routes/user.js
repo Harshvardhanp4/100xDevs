@@ -8,7 +8,7 @@ const {authMiddleware} = require("../middlewares")
 
 const signupSchema = zod.object({
     username: zod.string(),
-    password: zod.string(8),
+    password: zod.string(),
     firstName: zod.string(),
     lastName: zod.string()
 })
@@ -95,7 +95,7 @@ router.post("/signin", async(req, res) => {
 
 const updateBody = zod.object({
     password: zod.string().optional(),
-    firstName: zod.object().optional(),
+    firstName: zod.string().optional(),
     lastName: zod.string().optional()
 })
 
