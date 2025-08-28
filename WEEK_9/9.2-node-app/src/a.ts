@@ -69,13 +69,3 @@
 // console.log(e.greet('hi there'));
 
 
-// --------------------Type-----------------------------------//
-
-//1. Union : print the id of user which can be no. or a string
-//types let you define both no. or string.
-type GreetArg = number | string;
-function greet(id: (number | string)){
-
-}
-greet(1);
-greet("1")
