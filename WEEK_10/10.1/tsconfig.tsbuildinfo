@@ -1,1 +1,1 @@
-{"root":["./src/joins/create-table.ts","./src/joins/utils.ts"],"version":"5.9.2"}
+{"root":["./src/joins/create-table.ts","./src/joins/get-data.ts","./src/joins/insert-data.ts","./src/joins/utils.ts"],"version":"5.9.2"}

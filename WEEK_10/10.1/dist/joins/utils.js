@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { Client } from 'pg';
 export async function getClient() {
     const client = new Client({
