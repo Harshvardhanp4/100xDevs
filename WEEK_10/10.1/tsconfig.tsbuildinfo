@@ -1,1 +1,1 @@
-{"root":["./src/joins/create-table.ts","./src/joins/delete-data.ts","./src/joins/get-data.ts","./src/joins/insert-data.ts","./src/joins/update-data.ts","./src/joins/utils.ts"],"version":"5.9.2"}
+{"root":["./src/joins/advance-1.ts","./src/joins/advance-2.ts","./src/joins/advance-3.ts","./src/queries/create-table.ts","./src/queries/delete-data.ts","./src/queries/get-data.ts","./src/queries/insert-data.ts","./src/queries/update-data.ts","./src/queries/utils.ts"],"version":"5.9.2"}
