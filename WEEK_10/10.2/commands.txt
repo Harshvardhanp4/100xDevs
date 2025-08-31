@@ -1,0 +1,11 @@
+ npm init -y   
+ npm install typescript @types/node --save-dev // during only devlopment 
+
+ postgresql:-
+ psql -h localhost -o yourport -U exchange -d mydb
+
+ Run a migration:-
+ npx prisma migrate dev --name init
+
+ Delete migrations:- 
+rm -r prisma/migrations/
