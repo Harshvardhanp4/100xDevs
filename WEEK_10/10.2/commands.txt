@@ -2,7 +2,7 @@
  npm install typescript @types/node --save-dev // during only devlopment 
 
  postgresql:-
- psql -h localhost -o yourport -U exchange -d mydb
+ psql -U postgres -d mydb -h localhost -p 5432
 
  Run a migration:-
  npx prisma migrate dev --name init
