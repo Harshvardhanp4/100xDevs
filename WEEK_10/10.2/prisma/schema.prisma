@@ -6,26 +6,10 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
- model User {
-    id Int @id @default(autoincrement()) //increments 
-    email String @unique // email must be unique
-    name String? //? means optional
-    posts Post[] //need to do this strict
- }
-
- model Post {
-    id Int @id @default(autoincrement())
-    title String
-    content String?
-    published Boolean @default(false)
-    author User @relation(fields: [authorId], references: [id]) //every post has an author who is user, and the authorId will be the userId
-    authorId Int
- }

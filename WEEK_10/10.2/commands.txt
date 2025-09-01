@@ -9,3 +9,5 @@
 
  Delete migrations:- 
 rm -r prisma/migrations/
+
+/dt; //View all the tables
