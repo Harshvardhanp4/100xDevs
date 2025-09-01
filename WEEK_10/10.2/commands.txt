@@ -8,6 +8,13 @@
  npx prisma migrate dev --name init
 
  Delete migrations:- 
-rm -r prisma/migrations/
+ rm -r prisma/migrations/
 
-/dt; //View all the tables
+ /dt; //View all
+
+ For other databases:-
+ npx prisma init --datasource-provider database //in database enter which db you want mongo, postgresql etc.
+ 
+ For visualizing
+ npx prisma studio
+ 
