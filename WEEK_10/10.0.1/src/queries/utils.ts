@@ -1,5 +1,5 @@
 import "dotenv/config"
-import { Client } from 'pg';
+import { Client } from '../../node_modules/@types/pg/index.js';
 
 
 export async function getClient(){

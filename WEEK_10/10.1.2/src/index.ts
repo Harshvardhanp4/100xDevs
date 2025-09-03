@@ -95,14 +95,25 @@ const client = new Client({
 
 // Insert into Address.
 
- async function insertAddress(user_id:number, city: string){
-     await client.connect();
+//  async function insertAddress(user_id:number, city: string){
+//      await client.connect();
 
-     const query = `INSERT INTO address(user_id, city) VALUES($1, $2)`;
-     const value = [user_id, city];
-     const res = await client.query(query,value);
-     console.log("Insertion success!",res);
-     await client.end();
+//      const query = `INSERT INTO address(user_id, city) VALUES($1, $2)`;
+//      const value = [user_id, city];
+//      const res = await client.query(query,value);
+//      console.log("Insertion success!",res);
+//      await client.end();
 
- }
- insertAddress(2,'pune')
+//  }
+//  insertAddress(2,'pune')
+
+
+
+
+
+
+
+
+//----------------------------JOINS-----------------------------//
+
+

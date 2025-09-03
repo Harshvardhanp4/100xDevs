@@ -37,6 +37,7 @@ async function getTodosForUser(userId: number){
         console.log(`ID: ${todo.id}, Title: ${todo.title}, Description: ${todo.description}, Done: ${todo.done} `)
     }
 }
+
 getUsers();
 getUserFromEmail("john@gmail.com")
 
