@@ -1,0 +1,13 @@
+Installing Prisma
+
+1- Initialize an empty Node.js project 
+   npm init -y
+
+2- Add dependancies 
+   npm install prisma typescript ts-node @types/node --save-dev
+
+1. Initialize typescript:-
+   npx tsc --init
+
+1. Initialize a fresh prisma project
+   npx prisma init
