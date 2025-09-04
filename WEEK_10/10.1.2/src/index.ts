@@ -76,7 +76,7 @@ const client = new Client({
 
 //------------------RELATIONSHIPS & TRANSACTIONS-----------------------//
 
-// CREATING A ADDRESS TABLE WITH FOREIGN KEY 
+//----------------- CREATING A ADDRESS TABLE WITH FOREIGN KEY------------// 
 
 // async function createAddressTable(){
 //     await client.connect();
@@ -84,7 +84,7 @@ const client = new Client({
 //     id SERIAL PRIMARY KEY,
 //     user_id INTEGER NOT NULL,
 //     city VARCHAR(255) NOT NULL,
-//     FOREIGN KEY (user_id) REFERENCES users(id)
+//     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 //     )`;
 //     await client.query(query);
 //     console.log("Address table created!");
@@ -115,5 +115,58 @@ const client = new Client({
 
 
 //----------------------------JOINS-----------------------------//
+// get user and it will also get address
+
+// INNER JOIN returns rows where a match exists in both tables.
+
+// async function join(){
+//    await client.connect();
+
+//    const joinquery = `SELECT u.id, u.email, a.city
+//    FROM users u
+//    JOIN address a ON u.id = a.user_id`
+//    const res = await client.query(joinquery);
+//    console.log("Users with address", res);
+
+//    await client.end();
+
+// }
+
+// join();
+
+//----------------LEFT JOIN---------------------------------//
+// Returns all matching rows on left and right(null if no match)
+// vice versa for right.
+
+// async function leftjoin(){
+//    await client.connect();
+
+//    const joinquery = `SELECT u.id, u.email, a.city
+//    FROM users u
+//    LEFT JOIN address a ON u.id = a.user_id`
+//    const res = await client.query(joinquery);
+//    console.log("Users with address", res);
+
+//    await client.end();
+
+// }
+
+// leftjoin();
 
 
+// FULL JOIN 
+//it will return matching rows from left right table and insert null where not exists
+async function FULLJOIN(){
+   await client.connect();
+
+   const FullJoinQuery = `
+   SELECT u.id, u.email, a.city
+   FROM users u
+   FULL JOIN address a ON u.id = a.user_id
+   `
+   const res = await client.query(FullJoinQuery);
+   console.log("Result: ", res);
+   await client.end();
+}
+
+FULLJOIN();

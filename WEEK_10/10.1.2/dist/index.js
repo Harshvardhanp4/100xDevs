@@ -53,26 +53,67 @@ const client = new Client({
 // }
 // getUserFromEmail('u1@gmail.com')
 //------------------RELATIONSHIPS & TRANSACTIONS-----------------------//
-// CREATING A ADDRESS TABLE WITH FOREIGN KEY 
+//----------------- CREATING A ADDRESS TABLE WITH FOREIGN KEY------------// 
 // async function createAddressTable(){
 //     await client.connect();
 //     const query = `CREATE TABLE address(
 //     id SERIAL PRIMARY KEY,
 //     user_id INTEGER NOT NULL,
 //     city VARCHAR(255) NOT NULL,
-//     FOREIGN KEY (user_id) REFERENCES users(id)
+//     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 //     )`;
 //     await client.query(query);
 //     console.log("Address table created!");
 //     await client.end();
 // }
 // createAddressTable();
-async function insertAddress(user_id, city) {
+// Insert into Address.
+//  async function insertAddress(user_id:number, city: string){
+//      await client.connect();
+//      const query = `INSERT INTO address(user_id, city) VALUES($1, $2)`;
+//      const value = [user_id, city];
+//      const res = await client.query(query,value);
+//      console.log("Insertion success!",res);
+//      await client.end();
+//  }
+//  insertAddress(2,'pune')
+//----------------------------JOINS-----------------------------//
+// get user and it will also get address
+// INNER JOIN returns rows where a match exists in both tables.
+// async function join(){
+//    await client.connect();
+//    const joinquery = `SELECT u.id, u.email, a.city
+//    FROM users u
+//    JOIN address a ON u.id = a.user_id`
+//    const res = await client.query(joinquery);
+//    console.log("Users with address", res);
+//    await client.end();
+// }
+// join();
+//----------------LEFT JOIN---------------------------------//
+// Returns all matching rows on left and right(null if no match)
+// vice versa for right.
+// async function leftjoin(){
+//    await client.connect();
+//    const joinquery = `SELECT u.id, u.email, a.city
+//    FROM users u
+//    LEFT JOIN address a ON u.id = a.user_id`
+//    const res = await client.query(joinquery);
+//    console.log("Users with address", res);
+//    await client.end();
+// }
+// leftjoin();
+// FULL JOIN 
+//it will return matching rows from left right table and insert null where not exists
+async function FULLJOIN() {
     await client.connect();
-    const query = `INSERT INTO address(user_id, city) VALUES($1, $2)`;
-    const value = [user_id, city];
-    const res = await client.query(query, value);
-    console.log("Insertion success!", res);
+    const FullJoinQuery = `
+   SELECT u.id, u.email, a.city
+   FROM users u
+   FULL JOIN address a ON u.id = a.user_id
+   `;
+    const res = await client.query(FullJoinQuery);
+    console.log("Result: ", res);
     await client.end();
 }
-insertAddress(2, 'pune');
+FULLJOIN();
