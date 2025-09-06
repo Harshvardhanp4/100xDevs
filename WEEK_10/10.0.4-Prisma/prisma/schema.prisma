@@ -16,7 +16,7 @@ datasource db {
 model User {
   // @id is PRIMARY KEY @default(autoincrement()) serially increases 
   id Int @id @default(autoincrement())
-  username String @unique
+  email String @unique
   password String
   firstName String 
   lastName String

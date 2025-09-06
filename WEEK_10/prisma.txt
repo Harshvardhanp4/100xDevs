@@ -11,3 +11,8 @@ Installing Prisma
 
 1. Initialize a fresh prisma project
    npx prisma init
+
+
+2. Generate Prisma Migrations
+   npx prisma migrate dev --name Intialize the schema
+   // creates migrations and creates a migration.sql
