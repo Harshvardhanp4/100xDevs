@@ -1,0 +1,12 @@
+npm create cloudflare --my-app
+
+💻 Continue Developing
+Change directories: cd my-app
+Start dev server: npm run start
+Deploy: npm run deploy
+
+Grant auth to Wrangler:-
+ npx wrangler login
+
+Hono
+npm create hono@latest project-name
