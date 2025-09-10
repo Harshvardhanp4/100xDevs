@@ -17,3 +17,9 @@ To set up an endpoint, for example when creating a web server
 
 Allow HTTP traffic from the internet
 and done
+
+
+To make backend run permanently 
+do:-
+ npm i -g pm2
+ pm2 start index.js
