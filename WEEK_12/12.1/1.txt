@@ -1,0 +1,28 @@
+1. Login to AWS Console → search for S3.
+
+2. Create a bucket →
+
+Choose region (e.g., ap-south-1).
+keep it blocked if you’ll use CloudFront OAC (recommended).
+
+Upload frontend build files → your compiled index.html, CSS, JS, images.
+
+If React: run npm run build → upload the build/ or dist folder.
+
+Enable static website hosting (optional) → In S3 → Properties → Static website hosting.
+
+This gives you a direct S3 website URL (but not recommended for production).
+
+Create a CloudFront distribution (not CloudWatch 😅 small correction):
+
+Origin = your S3 bucket.
+
+Use Origin Access Control (OAC) so bucket is private but CloudFront can fetch.
+
+Copy the suggested bucket policy from CloudFront and paste into your S3 bucket policy.
+
+Deploy → Wait until CloudFront status = Deployed.
+
+Access via CDN URL → e.g., https://d123abcxyz.cloudfront.net/index.html.
+
+You can later map your own domain via Route 53 or any DNS.
