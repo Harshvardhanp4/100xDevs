@@ -15,4 +15,8 @@ Installing Prisma
 
 2. Generate Prisma Migrations
    npx prisma migrate dev --name Intialize the schema
-   // creates migrations and creates a migration.sql
+   // creates migrations - migrations.sql
+
+   Whenever you change schema.prisma
+   you have to do:- 
+   

@@ -15,7 +15,7 @@ const prisma = new PrismaClient();
 //             }
 //         }
 //     })
-// }
+// } 
 
 async function main(){
 
