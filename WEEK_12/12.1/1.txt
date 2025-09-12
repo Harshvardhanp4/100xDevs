@@ -2,18 +2,13 @@
 
 2. Create a bucket →
 
-Choose region (e.g., ap-south-1).
+3. Choose region (e.g., ap-south-1).
 keep it blocked if you’ll use CloudFront OAC (recommended).
 
-Upload frontend build files → your compiled index.html, CSS, JS, images.
+4.Upload frontend build files → your compiled index.html, CSS, JS, images.
+ If React: run npm run build → upload the build/ or dist folder.
 
-If React: run npm run build → upload the build/ or dist folder.
-
-Enable static website hosting (optional) → In S3 → Properties → Static website hosting.
-
-This gives you a direct S3 website URL (but not recommended for production).
-
-Create a CloudFront distribution (not CloudWatch 😅 small correction):
+5. Create a CloudFront distribution (not CloudWatch 😅 small correction):
 
 Origin = your S3 bucket.
 
