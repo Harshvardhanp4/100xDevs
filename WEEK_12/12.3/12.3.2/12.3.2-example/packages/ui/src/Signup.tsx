@@ -1,0 +1,10 @@
+
+export const Signup = () =>{
+    return <div style={{width:"100vh", justifyContent:"center", display: "flex"}}>
+    <div style={{width:400, border: "1px solid black"}}>
+        <input type="text" placeholder="Enter your email" />
+        <input type="text" placeholder="Enter your password" />
+        <button>Submit</button>
+    </div>
+    </div>
+}
