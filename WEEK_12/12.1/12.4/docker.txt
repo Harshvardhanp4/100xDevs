@@ -1,0 +1,18 @@
+Common Docker Commands:-
+
+1. docker run 
+2. docker ps :- show what all is running 
+3. docker kill :- docker kill <container-id>
+
+Running an Image:- 
+
+1. docker run nameoffile
+eg: docker run mongo 
+
+2. Add a port mapping
+eg: docker run -d -p 27017:27017 mongo //-d to exit and continue 
+
+
+For postgres
+docker run -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+docker run -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_USER=harrdy -d -p 5432:5432 postgres
