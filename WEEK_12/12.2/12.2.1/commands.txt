@@ -3,4 +3,6 @@ To do CLI
 docker exec -t <container_id> /bin/bash
 
 to connect to db
-# psql -h localhost -d postgres -U postgres
+psql -h localhost -d postgres -U postgres
+
+32:41
