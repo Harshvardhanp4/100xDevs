@@ -38,9 +38,3 @@ const client = new Client({
 // insertUserData('Harsh', 'harsh@gmail.com', 'harsh123');
 
 
-
-
-
-
-
-//RELATIONSHIPS
