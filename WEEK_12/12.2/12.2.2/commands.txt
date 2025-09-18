@@ -1,2 +1,4 @@
 npm install prisma typescript ts-node @types/node --save-dev
 npx prisma init
+npx prisma migrate dev --name Intialize the Schema
+npx prisma generate 
