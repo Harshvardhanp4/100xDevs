@@ -2,14 +2,21 @@ import { Router, type Request, type Response } from "express";
 import prisma from "../prismaClient.js";
 import jwt from "jsonwebtoken";
 import { signupInput, signinInput } from "@harshvardhanp4/medium-common";
+import { ZodError } from "zod";
+import bcrypt from "bcrypt";
 
 
 export const userRouter = Router();
 
+//Token Generation
+const generateToken = (id: string)=>{
+  return jwt.sign({id},process.env.JWT_SECRET as string);
+}
+
+
+
 
 // Signup
-
-import { ZodError } from "zod";
 
 userRouter.post("/signup", async (req: Request, res: Response) => {
   try {
@@ -17,21 +24,19 @@ userRouter.post("/signup", async (req: Request, res: Response) => {
     const parsed = signupInput.parse(req.body);
     const { name, email, password } = parsed;
 
+    const hashedPassword = await bcrypt.hash(password,10); // In production, hash the password before storing
+
     // Create user
     const user = await prisma.user.create({
       data: {
         name: name ?? null, // handle optional name
         email,
-        password,
+        password: hashedPassword,
       },
     });
 
     // Create JWT
-    const token = jwt.sign(
-      { id: user.id, email: user.email },
-      process.env.JWT_SECRET as string
-    );
-
+    const token = generateToken(user.id);
     res.json({ user, token: `Bearer ${token}` });
   } catch (error) {
     // Zod validation errors
@@ -63,10 +68,10 @@ userRouter.post("/signin", async (req: Request, res: Response) => {
                 email
             }
         });
-        if (!user || user.password !== password) {
-            return res.status(401).json({ message: "Invalid Credentials" });
-        }
-        const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET as string);
+         if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+        const token = generateToken(user.id);
         res.json({ user, token: `Bearer ${token}` });
     }
     catch (error) {

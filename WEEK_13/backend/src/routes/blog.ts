@@ -5,10 +5,10 @@ export const blogRouter = Router();
 import { createBlogInput, updateBlogInput } from "@harshvardhanp4/medium-common";
 import { ZodError } from "zod";
 
-// protected route
+//-------------protected route------------------------//
 blogRouter.use(authMiddleware);
  
-// Create Blog
+//--------------Create Blog----------------------//
 
 blogRouter.post("/", async (req: AuthRequest, res: Response) => {
     try {
@@ -34,7 +34,7 @@ blogRouter.post("/", async (req: AuthRequest, res: Response) => {
 });
 
 
-// Update Blog
+//---------------- Update Blog----------------//
 
 blogRouter.put("/", async (req: AuthRequest, res: Response) => {
     try {
@@ -66,12 +66,17 @@ blogRouter.put("/", async (req: AuthRequest, res: Response) => {
 
 
 blogRouter.get("/bulk",async(req:Request,res:Response)=>{
-    const blogs = await prisma.blog.findMany();
-    res.json({blogs});
+    try{
+        const blogs = await prisma.blog.findMany();
+         res.json({blogs});
+    }catch(error){
+        return res.status(500).json({message:"Internal Server Error"})
+    }
+   
 
 });
 
-// Get blog by id
+//---------------- Get blog by id----------------//
 
 blogRouter.get("/:id", async(req: AuthRequest, res: Response) => {
     try{
