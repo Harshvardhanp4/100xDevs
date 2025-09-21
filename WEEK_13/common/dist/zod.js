@@ -1,23 +1,29 @@
-import z from "zod";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateBlogInput = exports.createBlogInput = exports.signinInput = exports.signupInput = void 0;
+const zod_1 = __importDefault(require("zod"));
 //signup
-export const signupInput = z.object({
-    username: z.string().email({ message: "Invalid Email" }),
-    password: z.string().min(6, { message: "Password must be at least 6 characters" }),
-    name: z.string().optional()
+exports.signupInput = zod_1.default.object({
+    username: zod_1.default.string().email({ message: "Invalid Email" }),
+    password: zod_1.default.string().min(6, { message: "Password must be at least 6 characters" }),
+    name: zod_1.default.string().optional()
 });
 //signin    
-export const signinInput = z.object({
-    username: z.string().email({ message: "Invalid Email" }),
-    password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+exports.signinInput = zod_1.default.object({
+    username: zod_1.default.string().email({ message: "Invalid Email" }),
+    password: zod_1.default.string().min(6)
 });
 //create blog
-export const createBlogInput = z.object({
-    title: z.string().min(3).max(100),
-    content: z.string().min(10).max(500)
+exports.createBlogInput = zod_1.default.object({
+    title: zod_1.default.string().min(3).max(100),
+    content: zod_1.default.string().min(10).max(500)
 });
 //update blog
-export const updateBlogInput = z.object({
-    title: z.string().min(3).max(100).optional(),
-    content: z.string().min(10).max(500).optional(),
+exports.updateBlogInput = zod_1.default.object({
+    title: zod_1.default.string().min(3).max(100).optional(),
+    content: zod_1.default.string().min(10).max(500).optional(),
 });
 //# sourceMappingURL=zod.js.map

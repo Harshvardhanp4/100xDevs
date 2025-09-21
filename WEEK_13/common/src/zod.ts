@@ -13,7 +13,7 @@ export type SignupInput = z.infer<typeof signupInput>;
 //signin    
 export const signinInput = z.object({
   username: z.string().email({message:"Invalid Email"}),
-  password: z.string().min(6,{message:"Password must be at least 6 characters"}),
+  password: z.string().min(6)
     
 });
 

@@ -1,11 +1,12 @@
 import { Router, type Request, type Response } from "express";
-import { authMiddleware, type AuthRequest } from "../middlewares/auth.js";
-import prisma from "../prismaClient.js";
-export const blogRouter = Router();
+import { authMiddleware, type AuthRequest } from "../middlewares/auth";
+import prisma from "../prismaClient";
 import { createBlogInput, updateBlogInput } from "@harshvardhanp4/medium-common";
 import { ZodError } from "zod";
 
 //-------------protected route------------------------//
+const blogRouter = Router();
+
 blogRouter.use(authMiddleware);
  
 //--------------Create Blog----------------------//
@@ -97,6 +98,8 @@ blogRouter.get("/:id", async(req: AuthRequest, res: Response) => {
         res.status(500).json({message:"Internal Server Error"})
     }
 });
+
+export default blogRouter;
 
 
 
