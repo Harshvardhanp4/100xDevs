@@ -13,7 +13,7 @@ export const authMiddleware = (req, res, next) => {
             return res.status(401).json({ message: "Token missing after Bearer" });
         }
         const decoded = jwt.verify(token, secret);
-        req.user = { id: decoded.id, email: decoded.email };
+        req.user = { id: decoded.id };
         next();
     }
     catch (err) {

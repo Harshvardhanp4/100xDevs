@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
 export interface AuthRequest extends Request {
-  user?: { id: number; email: string };
+  user?: { id: string };
 }
 
 export const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -21,9 +21,9 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
       return res.status(401).json({ message: "Token missing after Bearer" });
     }
 
-    const decoded = jwt.verify(token, secret) as unknown as { id: number; email: string };
+    const decoded = jwt.verify(token, secret) as unknown as { id: string};
 
-    req.user = { id: decoded.id, email: decoded.email };
+    req.user = { id: decoded.id };
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid or expired token" });
