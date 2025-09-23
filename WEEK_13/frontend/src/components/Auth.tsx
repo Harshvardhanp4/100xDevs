@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { type SignupInput } from "@harshvardhanp4/medium-common";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
