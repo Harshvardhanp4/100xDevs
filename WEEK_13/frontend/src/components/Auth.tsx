@@ -1,14 +1,41 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import { type SignupInput } from "@harshvardhanp4/medium-common";
-
+import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
+    const navigate = useNavigate();
     const [postInputs, setPostInputs] = useState<SignupInput>({
         name: "",
         username: "",
         password: ""
     });
+
+    async function sendRequest() {
+        try {
+            const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs);
+            // Handle different response structures for signup and signin
+            const jwt = type === "signup"
+                ? response.data.data.token    // signup response: {success, data: {user, token}}
+                : response.data.token;        // signin response: {user, token}
+
+            if (!jwt) {
+                throw new Error("No token received from server");
+            }
+
+            localStorage.setItem("token", jwt);
+            navigate("/blogs");
+        } catch (err) {
+            console.error("Authentication error:", err);
+            alert(type === "signup" ? "Error while signing up" : "Error while signing in");
+        }
+    }
+
+
+
+
+
     return <div className="h-screen flex justify-center flex-col">
 
         <div className="flex justify-center">
@@ -25,28 +52,28 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                     </div>
                 </div>
                 <div className="pt-4">
-                    <LabelInput label="Name" placeholder="Harshvardhan...." onChange={(e) => {
+                    {type === "signup" ? <LabelInput label="Name" placeholder="Harshvardhan...." onChange={(e) => {
                         setPostInputs(postInputs => ({
                             ...postInputs,
                             name: e.target.value
                         }))
-                    }}></LabelInput>
+                    }}></LabelInput> : null}
 
                     <LabelInput label="Username" placeholder="harsh@gmail.com" onChange={(e) => {
                         setPostInputs(postInputs => ({
                             ...postInputs,
-                            name: e.target.value
+                            username: e.target.value
                         }))
                     }}></LabelInput>
 
                     <LabelInput label="Password" type={"password"} placeholder="harsh@xyz" onChange={(e) => {
                         setPostInputs(postInputs => ({
                             ...postInputs,
-                            name: e.target.value
+                            password: e.target.value
                         }))
                     }}></LabelInput>
                     <div className="pt-8">
-                        <button type="button" className="w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{type === "signup" ? "Sign Up" : "Sign In"}</button>
+                        <button onClick={sendRequest} type="button" className="w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">{type === "signup" ? "Sign Up" : "Sign In"}</button>
                     </div>
                 </div>
 
