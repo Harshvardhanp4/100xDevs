@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { type SignupInput } from "@harshvardhanp4/medium-common";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { WebsiteName } from "./WebsiteName";
 
 export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     const navigate = useNavigate();
@@ -37,7 +38,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
 
 
     return <div className="h-screen flex justify-center flex-col">
-
+        <WebsiteName />
         <div className="flex justify-center">
             <div>
                 <div className="px-10">

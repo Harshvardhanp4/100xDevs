@@ -8,29 +8,29 @@ import { ZodError } from "zod";
 const blogRouter = Router();
 
 blogRouter.use(authMiddleware);
- 
+
 //--------------Create Blog----------------------//
 
 blogRouter.post("/", async (req: AuthRequest, res: Response) => {
     try {
         const parsed = createBlogInput.parse(req.body);
-         const {title, content} = parsed;
+        const { title, content } = parsed;
 
         const blog = await prisma.blog.create({
-        data:{
-            title,
-            content,
-            authorId:req.user!.id
-        }
+            data: {
+                title,
+                content,
+                authorId: req.user!.id
+            }
 
-    });
-     res.json({message: "Blog Created! ", id: blog.id})
-   
-    }catch(error){
-        if(error instanceof ZodError){
-            return res.status(400).json({message:"Validation Failed"});
+        });
+        res.json({ message: "Blog Created! ", id: blog.id })
+
+    } catch (error) {
+        if (error instanceof ZodError) {
+            return res.status(400).json({ message: "Validation Failed" });
         }
-        res.status(500).json({message:"Internal Server Error"})
+        res.status(500).json({ message: "Internal Server Error" })
     }
 });
 
@@ -66,36 +66,56 @@ blogRouter.put("/", async (req: AuthRequest, res: Response) => {
 // Get all blogs //add pagination later
 
 
-blogRouter.get("/bulk",async(req:Request,res:Response)=>{
-    try{
-        const blogs = await prisma.blog.findMany();
-         res.json({blogs});
-    }catch(error){
-        return res.status(500).json({message:"Internal Server Error"})
+blogRouter.get("/bulk", async (req: Request, res: Response) => {
+    try {
+        const blogs = await prisma.blog.findMany({
+            select: {
+                content: true,
+                title: true,
+                id: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }
+        });
+        res.json({ blogs });
+    } catch (error) {
+        return res.status(500).json({ message: "Internal Server Error" })
     }
-   
+
 
 });
 
 //---------------- Get blog by id----------------//
 
-blogRouter.get("/:id", async(req: AuthRequest, res: Response) => {
-    try{
+blogRouter.get("/:id", async (req: AuthRequest, res: Response) => {
+    try {
         const id = req.params.id;
-        if(!id){
-            return res.status(400).json({message:"Blog id is required in params"});
+        if (!id) {
+            return res.status(400).json({ message: "Blog id is required in params" });
         }
         const blog = await prisma.blog.findUnique({
-        where:{
-            id
+            where: {
+                id
+            }, select: {
+                id: true,
+                title: true,
+                content: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }
+        });
+        if (!blog) {
+            return res.status(404).json({ message: "Blog Not Found" });
         }
-    });
-    if(!blog){
-        return res.status(404).json({message:"Blog Not Found"});
-    }
-    res.json({blog});
-    }catch(error){
-        res.status(500).json({message:"Internal Server Error"})
+        res.json({ blog });
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error" })
     }
 });
 

@@ -10,7 +10,7 @@ export const Quote = () => {
                 <div className="max-w-md text-left text-xl font-semibold mt-4">
                     -Harshvardhan Patil
                 </div>
-                <div className="max-w-md text-left text-sm font-semibold text-slate-400">
+                <div className="max-w-md text-left text-base font-semibold text-slate-400 pl-2">
                     Student | MitWpu
                 </div>
             </div>
