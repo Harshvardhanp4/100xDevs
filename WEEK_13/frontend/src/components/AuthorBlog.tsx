@@ -34,7 +34,7 @@ export const AuthorBlog = ({ blog }: { blog: Blog }) => {
                                 {blog.author.name || "Anonymous"}
                             </div>
                             <div className="pt-2 text-slate-500">
-                                Random catch phrase about the authors
+                                An Author From Medium
                             </div>
                         </div>
                     </div>

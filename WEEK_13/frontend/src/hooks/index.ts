@@ -9,7 +9,7 @@ export interface Blog {
     map(arg0: (blog: any) => JSX.Element): import("react").ReactNode;
     content: string
     title: string,
-    id: number,
+    id: string,
     author: {
         name: string
     }
