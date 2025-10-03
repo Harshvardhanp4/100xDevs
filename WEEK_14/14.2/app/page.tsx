@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function getUserDetails() {
   await new Promise((r) => setTimeout(r, 3000))
-  const response = await axios.get("http://localhost:5000/users/1");
+  const response = await axios.get("http://localhost:3000/api/user");
   return response.data;
 
 }
