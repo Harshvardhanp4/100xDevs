@@ -10,7 +10,7 @@ async function getUserDetails() {
 
 // asynchronus component on top
 export default async function Home() {
-  const userDetails = await getUserDetails();
+  const userDetails = await getUserDetails() || { name: "n/a", username: "n/a" };
   return (
     <div className="flex flex-col justify-center h-screen">
       <div className="flex justify-center">
@@ -18,7 +18,7 @@ export default async function Home() {
           <div>
             Name: {userDetails.name}
           </div>
-          Email: {userDetails.email}
+          Username: {userDetails.username}
 
 
         </div>
