@@ -1,13 +1,13 @@
-import CardComponent from "@/components/CardComponent";
 
 
-export default function Home() {
+
+export default async function Home() {
 
 
 
   return (
     <div>
-      <CardComponent></CardComponent>
+      hi there
     </div>
   );
 }
