@@ -1,0 +1,10 @@
+
+
+docker run -d -p 27017:27017 mongo (port mapping )
+docker run -d mongo (run mongo in background detached mode)
+docker rmi mongo (remove images)
+docker kill <container_id> (kill a container )
+docker build (create your own)
+
+docker build -t harsh-test . -> creating an image 
+docker run -p 3000:3000 harsh-test
