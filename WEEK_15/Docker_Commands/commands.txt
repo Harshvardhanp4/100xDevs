@@ -8,3 +8,6 @@ docker build (create your own)
 
 docker build -t harsh-test . -> creating an image 
 docker run -p 3000:3000 harsh-test
+
+passing env:-
+docker run -p 3000:3000 DATABASE_URL="-----" image_name
