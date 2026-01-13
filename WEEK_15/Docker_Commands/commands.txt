@@ -5,6 +5,20 @@ docker run -d mongo (run mongo in background detached mode)
 docker rmi mongo (remove images)
 docker kill <container_id> (kill a container )
 docker build (create your own)
+docker exec (to execute a command inside a docker container)
+
+docker build -t harsh-test . -> creating an image //-t is tagline as in name and . to find it
+docker run -p 3000:3000 harsh-test
+
+
+Loading ENV VARIABLES:-
+
+docker run -p 3000:3000 -e DATABASE_URL="your_url" image_name 
+
+
+SSH INTO Container
+
+docker exec -it <container_id> /bin/bash
 
 docker build -t harsh-test . -> creating an image 
 docker run -p 3000:3000 harsh-test
